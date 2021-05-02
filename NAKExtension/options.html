@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<body>
+		<div class="input">
+			<span> CIS/Moodle username: </span>
+			<input type="text" id="username" />
+		</div>
+
+		<div class="input">
+			<span> CIS/Moodle password:</span>
+			<input type="password" id="password" />
+		</div>
+
+		<div class="input submit">
+			<button id="save">Save</button>
+			<div id="status"></div>
+		</div>
+
+		<style>
+			.input {
+				display: flex;
+				justify-content: space-between;
+				margin: 10px;
+			}
+
+			.submit {
+				justify-content: flex-start;
+			}
+
+			button {
+				margin-right: 10px;
+			}
+		</style>
+
+		<script src="options.js"></script>
+	</body>
+</html>
