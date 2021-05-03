@@ -2,8 +2,8 @@ const tutorialSteps = [
 	{
 		description: (
 			<span>
-				This is a Chrome Extension, that logs you into Cis and Moodle
-				automatically
+				This is a Chrome Extension that automatically logs you into Cis and
+				Moodle
 			</span>
 		),
 		imgPath: "./assets/tutorial1.png",
@@ -66,6 +66,10 @@ const tutorialSteps = [
 	{
 		description: <span>You are done. Enjoy the extension</span>,
 		imgPath: "./assets/tutorial9.png",
+	},
+	{
+		description: <span>Come back regularly to update the extension</span>,
+		imgPath: "./assets/tutorial10.png",
 	},
 ];
 
