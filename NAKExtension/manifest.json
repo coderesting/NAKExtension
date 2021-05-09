@@ -1,25 +1,29 @@
 {
-	"name": "Auto Login",
+	"name": "NAK Extension",
 	"version": "0.1.0",
-	"description": "Automatic login for Moodle and Cis",
+	"description": "Makes Moodle and Cis better",
 	"manifest_version": 2,
 	"permissions": ["activeTab", "declarativeContent", "storage"],
-	"icons": { "100": "icon.png" },
+	"icons": { "192": "NAKExtension-192x192.png" },
 	"content_scripts": [
 		{
 			"matches": ["*://moodle2.nordakademie.de/login/index.php"],
-			"js": ["moodle.js"]
+			"js": ["scripts/moodleLogin.js"]
+		},
+		{
+			"matches": ["*://moodle2.nordakademie.de/*"],
+			"js": ["scripts/moodleEnhance.js"]
 		},
 		{
 			"matches": [
 				"*://cis.nordakademie.de/*",
 				"*://cis.nordakademie.de/?no_cache=1"
 			],
-			"js": ["cis.js"]
+			"js": ["scripts/cisLogin.js"]
 		}
 	],
 	"options_ui": {
-		"page": "options.html",
+		"page": "options/options.html",
 		"open_in_tab": false
 	}
 }
