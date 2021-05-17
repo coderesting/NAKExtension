@@ -21,6 +21,15 @@
 		{
 			"matches": ["*://aaa.nordakademie.de/logon/LogonPoint/index.html"],
 			"js": ["scripts/autoLogin/clicker.js", "scripts/autoLogin/citrix.js"]
+		},
+
+		{
+			"matches": ["*://moodle2.nordakademie.de/*"],
+			"js": [
+				"scripts/enhanceMoodle/fillSidebar.js",
+				"scripts/enhanceMoodle/showCurrentCourse.js",
+				"scripts/enhanceMoodle/main.js"
+			]
 		}
 	],
 	"options_ui": {
