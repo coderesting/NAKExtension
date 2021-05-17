@@ -1,7 +1,7 @@
 function save_options() {
 	var username = document.getElementById("username").value;
 	var password = document.getElementById("password").value;
-	chrome.storage.sync.set(
+	chrome.storage.local.set(
 		{
 			username,
 			password,
@@ -17,7 +17,7 @@ function save_options() {
 }
 
 function restore_options() {
-	chrome.storage.sync.get(
+	chrome.storage.local.get(
 		{
 			username: "",
 			password: "",
