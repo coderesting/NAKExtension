@@ -16,6 +16,11 @@
 				"*://cis.nordakademie.de/?no_cache=1"
 			],
 			"js": ["scripts/autoLogin/clicker.js", "scripts/autoLogin/cis.js"]
+		},
+
+		{
+			"matches": ["*://aaa.nordakademie.de/logon/LogonPoint/index.html"],
+			"js": ["scripts/autoLogin/clicker.js", "scripts/autoLogin/citrix.js"]
 		}
 	],
 	"options_ui": {
