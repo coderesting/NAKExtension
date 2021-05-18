@@ -38,9 +38,11 @@
 		{
 			"matches": ["*://moodle2.nordakademie.de/*"],
 			"js": [
+				"scripts/storage.js",
 				"scripts/enhanceMoodle/ical.js",
 				"scripts/enhanceMoodle/fillSidebar.js",
-				"scripts/enhanceMoodle/showCurrentCourse.js",
+				"scripts/enhanceMoodle/nextCoursesPanel.js",
+				"scripts/enhanceMoodle/showNextCourses.js",
 				"scripts/enhanceMoodle/main.js"
 			],
 			"css": ["scripts/enhanceMoodle/styles.css"]

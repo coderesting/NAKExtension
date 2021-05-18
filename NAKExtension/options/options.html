@@ -1,14 +1,26 @@
 <!DOCTYPE html>
 <html>
 	<body>
+		<h2>Auto Login (Cis/Moodle/Owa)</h2>
 		<div class="input">
-			<span> CIS/Moodle username: </span>
+			<span> username: </span>
 			<input type="text" id="username" />
 		</div>
 
 		<div class="input">
-			<span> CIS/Moodle password:</span>
+			<span> password:</span>
 			<input type="password" id="password" />
+		</div>
+
+		<h2>Show next courses in Moodle</h2>
+		<div class="input">
+			<span> centuria: </span>
+			<input type="text" id="centuria" />
+		</div>
+
+		<div class="input">
+			<span> semester:</span>
+			<input type="number" id="semester" />
 		</div>
 
 		<div class="input submit">
@@ -17,6 +29,9 @@
 		</div>
 
 		<style>
+			span {
+				font-size: 13px;
+			}
 			.input {
 				display: flex;
 				justify-content: space-between;
@@ -32,6 +47,7 @@
 			}
 		</style>
 
+		<script src="../scripts/storage.js"></script>
 		<script src="options.js"></script>
 	</body>
 </html>

@@ -11,7 +11,6 @@ async function attemptLogin(usernameInput, passwordInput, loginButton) {
 	}
 
 	if (Date.now() - lastTry > 10000) {
-		console.log("auto login");
 		await setData({ lastTry: Date.now() });
 		loginButton.click();
 	} else {

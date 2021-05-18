@@ -11,7 +11,6 @@ async function fillSidebar() {
 			if (!courseAlreadyExists(course.href)) {
 				const courseElm = createCourseElm(course.title, course.href);
 				nav.insertBefore(courseElm, moreButton);
-				console.log("added: " + course.title);
 			}
 		}
 	}

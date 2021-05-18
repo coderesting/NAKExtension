@@ -1,0 +1,25 @@
+#nextCoursesPanel {
+	position: fixed;
+	right: 15px;
+	bottom: 15px;
+	background: #eee;
+	width: 358px;
+	padding: 10px;
+	box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+	z-index: 1000;
+	transition: 0.3s ease;
+	transform: translateY(150%);
+}
+
+#nextCoursesPanel.open {
+	transform: translateY(0%);
+}
+#nextCoursesPanel .nextCoursesHeader {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+#nextCoursesPanel .nextCoursesHeader svg {
+	cursor: pointer;
+}
