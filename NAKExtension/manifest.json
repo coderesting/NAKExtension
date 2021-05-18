@@ -8,32 +8,46 @@
 	"content_scripts": [
 		{
 			"matches": ["*://moodle2.nordakademie.de/login/index.php"],
-			"js": ["scripts/autoLogin/clicker.js", "scripts/autoLogin/moodle.js"]
+			"js": [
+				"scripts/storage.js",
+				"scripts/autoLogin/clicker.js",
+				"scripts/autoLogin/moodle.js"
+			]
 		},
 		{
 			"matches": [
 				"*://cis.nordakademie.de/*",
 				"*://cis.nordakademie.de/?no_cache=1"
 			],
-			"js": ["scripts/autoLogin/clicker.js", "scripts/autoLogin/cis.js"]
+			"js": [
+				"scripts/storage.js",
+				"scripts/autoLogin/clicker.js",
+				"scripts/autoLogin/cis.js"
+			]
 		},
 
 		{
 			"matches": ["*://aaa.nordakademie.de/logon/LogonPoint/index.html"],
-			"js": ["scripts/autoLogin/clicker.js", "scripts/autoLogin/citrix.js"]
+			"js": [
+				"scripts/storage.js",
+				"scripts/autoLogin/clicker.js",
+				"scripts/autoLogin/citrix.js"
+			]
 		},
 
 		{
 			"matches": ["*://moodle2.nordakademie.de/*"],
 			"js": [
+				"scripts/enhanceMoodle/ical.js",
 				"scripts/enhanceMoodle/fillSidebar.js",
 				"scripts/enhanceMoodle/showCurrentCourse.js",
 				"scripts/enhanceMoodle/main.js"
-			]
+			],
+			"css": ["scripts/enhanceMoodle/styles.css"]
 		}
 	],
 	"options_ui": {
 		"page": "options/options.html",
-		"open_in_tab": false
+		"open_in_tab": true
 	}
 }
