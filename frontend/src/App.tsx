@@ -16,12 +16,15 @@ import featureSteps from "./featureSteps";
 
 function App() {
 	const [currentTab, setCurrentTab] = useState(0);
-	const theme = useTheme();
 	return (
 		<>
 			<CssBaseline />
 			<main>
-				<Header />
+				<Header
+					img="assets/NAKExtension-256x256.png"
+					text="Enhance Moodle, Cis and Owa with this Chrome extension. Features
+						include auto login, Moodle course suggestions and more."
+				/>
 
 				<Box display="flex" justifyContent="center" m={2}>
 					<Button

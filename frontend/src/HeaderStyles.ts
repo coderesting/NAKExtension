@@ -10,8 +10,6 @@ const useStyles = makeStyles((theme) => ({
 	},
 	headerImg: {
 		width: 150,
-		backgroundColor: theme.palette.primary.dark,
-		borderRadius: 20,
 	},
 	headerText: {
 		maxWidth: 410,
