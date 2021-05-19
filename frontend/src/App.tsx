@@ -61,7 +61,7 @@ function App() {
 
 				<Box display="flex" justifyContent="center" m={3}>
 					<Button
-						href="https://github.com/jeff-saupe/ScheduleCleaner#%EF%B8%8F-schedule-cleaner"
+						href="https://github.com/coderesting/NAKExtension"
 						variant="outlined"
 						color="primary"
 					>
