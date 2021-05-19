@@ -58,6 +58,16 @@ function App() {
 						)}
 					</Paper>
 				</Container>
+
+				<Box display="flex" justifyContent="center" m={3}>
+					<Button
+						href="https://github.com/jeff-saupe/ScheduleCleaner#%EF%B8%8F-schedule-cleaner"
+						variant="outlined"
+						color="primary"
+					>
+						This project on Github
+					</Button>
+				</Box>
 			</main>
 		</>
 	);
