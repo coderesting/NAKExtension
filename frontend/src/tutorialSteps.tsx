@@ -53,7 +53,7 @@ const tutorialSteps = [
 	{
 		description: (
 			<span>
-				Fill in your login details and click <i>&nbsp;save</i>
+				Fill in your details and click <i>&nbsp;save</i>
 			</span>
 		),
 		imgPath: "./assets/tutorial/8.mp4",
