@@ -1,29 +1,39 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import "./index.css";
 import App from "./App";
-import { createMuiTheme, CssBaseline, ThemeProvider } from "@material-ui/core";
+import { createMuiTheme, ThemeProvider } from "@material-ui/core/styles";
+import blue from "@material-ui/core/colors/blue";
 
-const darkTheme = createMuiTheme({
+declare global {
+	namespace JSX {
+		interface IntrinsicElements {
+			"app-naktoolsbadge": React.DetailedHTMLProps<
+				React.HTMLAttributes<HTMLElement>,
+				HTMLElement
+			>;
+		}
+	}
+}
+
+const theme = createMuiTheme({
 	palette: {
 		type: "dark",
 		background: {
+			paper: "#34444c",
 			default: "#263238",
 		},
-		primary: {
-			light: "#039BE5",
-			main: "#039BE5",
-			dark: "#039BE5",
-		},
+
+		primary: blue,
 	},
 });
 
 ReactDOM.render(
-	<React.StrictMode>
-		<ThemeProvider theme={darkTheme}>
-			<CssBaseline />
-			<App />
-		</ThemeProvider>
-	</React.StrictMode>,
+	<ThemeProvider theme={theme}>
+		<App />
+		<app-naktoolsbadge
+			text-color={theme.palette.text.primary}
+			background-color={theme.palette.background.paper}
+		/>
+	</ThemeProvider>,
 	document.getElementById("root")
 );

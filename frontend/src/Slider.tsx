@@ -1,33 +1,16 @@
-import { makeStyles, MobileStepper, Typography } from "@material-ui/core";
+import { MobileStepper, Typography, useTheme } from "@material-ui/core";
 import { KeyboardArrowLeft, KeyboardArrowRight } from "@material-ui/icons";
 import Button from "@material-ui/core/Button";
 import SwipeableViews from "react-swipeable-views";
 import React, { useState } from "react";
-import tutorialSteps from "./tutorialSteps";
+import useStyles from "./SliderStyles";
 
-const useStyles = makeStyles((theme) => ({
-	slider: {
-		maxWidth: 600,
-		margin: "auto",
-	},
-	header: {
-		height: 50,
-		display: "flex",
-		alignItems: "flex-end",
-		marginBottom: 5,
-	},
-	img: {
-		height: "100%",
-		width: "100%",
-		borderRadius: 10,
-		cursor: "grab",
-		userSelect: "none",
-	},
-}));
-
-function Slider() {
+function Slider(props: {
+	steps: { description: JSX.Element; imgPath: string }[];
+}) {
 	const classes = useStyles();
 	const [activeStep, setActiveStep] = useState(0);
+	const theme = useTheme();
 
 	const handleNext = () => {
 		setActiveStep((prevActiveStep) => prevActiveStep + 1);
@@ -40,7 +23,7 @@ function Slider() {
 	return (
 		<div className={classes.slider}>
 			<Typography className={classes.header}>
-				{tutorialSteps[activeStep].description}
+				{props.steps[activeStep].description}
 			</Typography>
 
 			<SwipeableViews
@@ -48,42 +31,40 @@ function Slider() {
 				onChangeIndex={setActiveStep}
 				enableMouseEvents
 			>
-				{tutorialSteps.map((step, index) => {
+				{props.steps.map((step, index) => {
 					const parts = step.imgPath.split(".");
 					const extension = parts[parts.length - 1];
 					return extension === "mp4" ? (
-						<div key={index}>
-							<video
-								key={index}
-								muted
-								autoPlay
-								loop
-								className={classes.img}
-								src={step.imgPath}
-							/>
-						</div>
+						<video
+							key={index}
+							muted
+							autoPlay
+							loop
+							className={classes.img}
+							src={step.imgPath}
+						/>
 					) : (
-						<div key={index}>
-							<img
-								className={classes.img}
-								src={step.imgPath}
-								alt="Explanation about the text above"
-							/>
-						</div>
+						<img
+							key={index}
+							className={classes.img}
+							src={step.imgPath}
+							alt="Explanation about the text above"
+						/>
 					);
 				})}
 			</SwipeableViews>
 
 			<MobileStepper
-				variant="progress"
-				steps={tutorialSteps.length}
+				variant="dots"
+				steps={props.steps.length}
 				position="static"
 				activeStep={activeStep}
+				style={{ backgroundColor: theme.palette.background.paper }}
 				nextButton={
 					<Button
 						size="small"
 						onClick={handleNext}
-						disabled={activeStep === tutorialSteps.length - 1}
+						disabled={activeStep === props.steps.length - 1}
 						endIcon={<KeyboardArrowRight />}
 					>
 						Next

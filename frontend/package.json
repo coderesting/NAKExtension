@@ -1,6 +1,6 @@
 {
 	"name": "NAKExtension",
-	"version": "1.0",
+	"version": "1.0.0",
 	"homepage": "./",
 	"private": true,
 	"dependencies": {
@@ -22,8 +22,8 @@
 		"web-vitals": "^1.0.1"
 	},
 	"scripts": {
-		"start": "npm run zip & react-scripts start",
-		"build": "npm run zip & react-scripts build",
+		"start": "react-scripts start",
+		"build": "react-scripts build",
 		"test": "react-scripts test",
 		"eject": "react-scripts eject"
 	},
