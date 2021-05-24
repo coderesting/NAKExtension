@@ -32,7 +32,8 @@ const getCisCookie = async () => {
   })
 }
 
-const checkExamGrades = async () => {
+const getExamGrades = async () => {
+  let examGradesString
   await fetch(
     "https://cis.nordakademie.de/studium/pruefungen/pruefungsergebnisse/?tx_nagrades_nagradesmodules%5Blang%5D=de&tx_nagrades_nagradesmodules%5BcurriculumId%5D=56&tx_nagrades_nagradesmodules%5Baction%5D=transcript&tx_nagrades_nagradesmodules%5Bcontroller%5D=Notenverwaltung&cHash=6966ddcc530a48a5bc3c9f277fb4b6a8",
     {
@@ -71,8 +72,7 @@ const checkExamGrades = async () => {
         .then((content) => {
           const strings = content.items.map((item) => item.str)
           const examGrades = pdfItemsToGradesObjectMapper(strings)
-
-          console.log(examGrades)
+          examGradesString = examGrades.join()
         })
     )
     .catch((e) => {
@@ -80,6 +80,7 @@ const checkExamGrades = async () => {
         console.log("Could not fetch Exam Grades. Check your credentials")
       } else console.log("Failed to check exam grades. Please check your extension permissions")
     })
+  return examGradesString
 }
 
 const pdfItemsToGradesObjectMapper = (strings) => {
@@ -90,7 +91,24 @@ const pdfItemsToGradesObjectMapper = (strings) => {
   return gradeItems
 }
 
+const areExamStringsEqual = (oldExamGrades, newExamGrades) => {
+  return oldExamGrades.localeCompare(newExamGrades) === 0
+}
+
 const checkNakExams = async () => {
   await getCisCookie()
-  checkExamGrades()
+  const examGradesString = await getExamGrades()
+  const chromeStorageGradeString = chrome.storage.local.get({ nakExamGrades: "" }, (data) =>
+    console.log("ChromeData: " + data)
+  )
+  console.log(chromeStorageGradeString)
+  if (!chromeStorageGradeString) {
+    await setData({ nakExamGrades: examGradesString })
+    return
+  }
+  if (!areExamStringsEqual(chromeStorageGradeString, examGradesString)) {
+    console.log("Deine Noten wurden aktualisiert!")
+  } else {
+    console.log("Deine Noten wurden nicht aktualisiert!")
+  }
 }
