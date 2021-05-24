@@ -114,7 +114,7 @@ const checkNakExams = async () => {
         message: "Deine Prüfungsergebnisse wurden aktualisiert!",
       },
       () => {
-        await setData({ nakExamGrades: newExamGradesString })
+        setData({ nakExamGrades: newExamGradesString })
       }
     )
   }
