@@ -97,18 +97,25 @@ const areExamStringsEqual = (oldExamGrades, newExamGrades) => {
 
 const checkNakExams = async () => {
   await getCisCookie()
-  const examGradesString = await getExamGrades()
-  const chromeStorageGradeString = chrome.storage.local.get({ nakExamGrades: "" }, (data) =>
-    console.log("ChromeData: " + data)
-  )
-  console.log(chromeStorageGradeString)
-  if (!chromeStorageGradeString) {
-    await setData({ nakExamGrades: examGradesString })
+  const newExamGradesString = await getExamGrades()
+  const { nakExamGrades: oldExamGradesString } = await getData({ nakExamGrades: "" })
+
+  if (!oldExamGradesString) {
+    await setData({ nakExamGrades: newExamGradesString })
     return
   }
-  if (!areExamStringsEqual(chromeStorageGradeString, examGradesString)) {
-    console.log("Deine Noten wurden aktualisiert!")
-  } else {
-    console.log("Deine Noten wurden nicht aktualisiert!")
+  if (!areExamStringsEqual(oldExamGradesString, newExamGradesString)) {
+    chrome.notifications.create(
+      {
+        type: "basic",
+        title: "Exam-Notifier Update",
+        priority: 1,
+        iconUrl: "chrome-extension://clhmmjpagpkmahndapbciimoaelbmcab/NAKExtension-128x128.png",
+        message: "Deine Prüfungsergebnisse wurden aktualisiert!",
+      },
+      () => {
+        await setData({ nakExamGrades: newExamGradesString })
+      }
+    )
   }
 }
