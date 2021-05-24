@@ -25,7 +25,7 @@ const getCisCookie = async () => {
     },
     referrer: "https://cis.nordakademie.de/?no_cache=1",
     referrerPolicy: "strict-origin-when-cross-origin",
-    body: `user=${username}pass=${password}&submit=Anmelden&logintype=login&pid=706&redirect_url=%2F%3Fno_cache%3D1&tx_felogin_pi1%5Bnoredirect%5D=0&referer=https%3A%2F%2Fcis.nordakademie.de%2F%3Fno_cache%3D1`,
+    body: `user=${username}&pass=${password}&submit=Anmelden&logintype=login&pid=706&redirect_url=%2F%3Fno_cache%3D1&tx_felogin_pi1%5Bnoredirect%5D=0&referer=https%3A%2F%2Fcis.nordakademie.de%2F%3Fno_cache%3D1`,
     method: "POST",
     mode: "no-cors",
     credentials: "include",
@@ -36,6 +36,7 @@ const checkExamGrades = async () => {
   await fetch(
     "https://cis.nordakademie.de/studium/pruefungen/pruefungsergebnisse/?tx_nagrades_nagradesmodules%5Blang%5D=de&tx_nagrades_nagradesmodules%5BcurriculumId%5D=56&tx_nagrades_nagradesmodules%5Baction%5D=transcript&tx_nagrades_nagradesmodules%5Bcontroller%5D=Notenverwaltung&cHash=6966ddcc530a48a5bc3c9f277fb4b6a8",
     {
+      Origin: "https://cis.nordakademie.de",
       headers: {
         accept:
           "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9",
@@ -53,13 +54,14 @@ const checkExamGrades = async () => {
       body: null,
       method: "GET",
       mode: "cors",
-      credentials: "include",
+      credentials: "same-origin",
     }
   )
     .then((res) => {
       if (!res.ok) {
-        throw new Error("Could not fetch Exam Grades")
+        throw new Error("ExamFetchError")
       }
+      return res
     })
     .then((res) =>
       pdfjsLib
@@ -74,8 +76,7 @@ const checkExamGrades = async () => {
         })
     )
     .catch((e) => {
-      console.log()
-      if (e.message === "Could not fetch Exam Grades") {
+      if (e.message === "ExamFetchError") {
         console.log("Could not fetch Exam Grades. Check your credentials")
       } else console.log("Failed to check exam grades. Please check your extension permissions")
     })
