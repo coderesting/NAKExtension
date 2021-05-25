@@ -96,6 +96,7 @@ const areExamStringsEqual = (oldExamGrades, newExamGrades) => {
 
 const checkNakExams = async () => {
   await getCisCookie()
+  await delay(5000)
   const newExamGradesString = await getExamGrades()
   const { nakExamGrades: oldExamGradesString } = await getData({ nakExamGrades: "" })
 
@@ -118,3 +119,5 @@ const checkNakExams = async () => {
     )
   }
 }
+
+const delay = (ms) => new Promise((res) => setTimeout(res, ms))
