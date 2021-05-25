@@ -31,6 +31,15 @@
 		},
 
 		{
+			"matches": ["*://gitlab2.nordakademie.de/users/sign_in"],
+			"js": [
+				"scripts/storage.js",
+				"scripts/autoLogin/clicker.js",
+				"scripts/autoLogin/gitlab.js"
+			]
+		},
+
+		{
 			"matches": ["*://aaa.nordakademie.de/logon/LogonPoint/index.html"],
 			"js": [
 				"scripts/storage.js",
