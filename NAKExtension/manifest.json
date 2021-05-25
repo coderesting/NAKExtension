@@ -1,0 +1,74 @@
+{
+	"name": "NAK Extension",
+	"version": "1.0.0",
+	"description": "Makes Moodle and Cis better",
+	"manifest_version": 2,
+	"permissions": [
+		"activeTab",
+		"declarativeContent",
+		"storage",
+		"*://*.nordakademie.de/*",
+		"alarms",
+		"notifications"
+	],
+	"icons": { "128": "NAKExtension-128x128.png" },
+	"browser_action": {
+		"default_icon": "NAKExtension-128x128.png",
+		"default_popup": "options/options.html"
+	},
+	"content_scripts": [
+		{
+			"matches": ["*://moodle2.nordakademie.de/login/index.php"],
+			"js": [
+				"scripts/storage.js",
+				"scripts/autoLogin/clicker.js",
+				"scripts/autoLogin/moodle.js"
+			]
+		},
+		{
+			"matches": [
+				"*://cis.nordakademie.de/*",
+				"*://cis.nordakademie.de/?no_cache=1"
+			],
+			"js": [
+				"scripts/storage.js",
+				"scripts/autoLogin/clicker.js",
+				"scripts/autoLogin/cis.js"
+			]
+		},
+
+		{
+			"matches": ["*://aaa.nordakademie.de/logon/LogonPoint/index.html"],
+			"js": [
+				"scripts/storage.js",
+				"scripts/autoLogin/clicker.js",
+				"scripts/autoLogin/citrix.js"
+			]
+		},
+		{
+			"matches": ["*://moodle2.nordakademie.de/*"],
+			"js": [
+				"scripts/storage.js",
+				"scripts/enhanceMoodle/ical.js",
+				"scripts/enhanceMoodle/fillSidebar.js",
+				"scripts/enhanceMoodle/nextCoursesPanel.js",
+				"scripts/enhanceMoodle/showNextCourses.js",
+				"scripts/enhanceMoodle/main.js"
+			],
+			"css": ["scripts/enhanceMoodle/styles.css"]
+		}
+	],
+	"background": {
+		"scripts": [
+			"scripts/examNotifier/pdf.worker.min.js",
+			"scripts/examNotifier/pdf.min.js",
+			"scripts/storage.js",
+			"scripts/examNotifier/nakExamNotifier.js",
+			"background.js"
+		]
+	},
+	"options_ui": {
+		"page": "options/options.html",
+		"open_in_tab": false
+	}
+}
