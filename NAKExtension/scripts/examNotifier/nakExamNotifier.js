@@ -95,10 +95,8 @@ const checkNakExams = async () => {
     password: "",
     notifyOnNewExamGrade: false,
   })
-  console.log("Ich da")
   if (!notifyOnNewExamGrade) return
 
-  console.log("Ich bin kaputt")
   await getCisCookie(username, password)
   await delay(5000)
   const newExamGradesString = await getExamGrades()
