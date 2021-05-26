@@ -27,13 +27,11 @@ function App() {
 
 				<Box display="flex" justifyContent="center" m={2}>
 					<Button
-						href="https://github.com/coderesting/NAKExtension/releases"
-						style={{ textTransform: "none" }}
+						href="https://chrome.google.com/webstore/detail/nak-extension/plhjgmegekkfofgdjoifdgcjgodfhihj"
 						variant="outlined"
 						color="primary"
-						autoCapitalize="true"
 					>
-						Download
+						Add to Chrome
 					</Button>
 				</Box>
 

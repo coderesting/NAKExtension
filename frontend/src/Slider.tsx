@@ -5,9 +5,7 @@ import SwipeableViews from "react-swipeable-views";
 import React, { useState } from "react";
 import useStyles from "./SliderStyles";
 
-function Slider(props: {
-	steps: { description: JSX.Element; imgPath: string }[];
-}) {
+function Slider(props: { steps: { description: string; imgPath: string }[] }) {
 	const classes = useStyles();
 	const [activeStep, setActiveStep] = useState(0);
 	const theme = useTheme();
