@@ -1,9 +1,10 @@
 class ShowNextCourses {
-	constructor(centuria, semester) {
+	constructor(sidebarInfo, centuria, semester) {
+		this.setSidebarCourseData(sidebarInfo);
 		this.centuria = centuria;
 		this.semester = semester;
+
 		this.panel = new NextCoursesPanel(this.stopUpdates.bind(this));
-		this.setCourseElms();
 		this.updateSchedule().then((e) => {
 			this.updateNextCourses();
 		});
@@ -23,22 +24,19 @@ class ShowNextCourses {
 		clearInterval(this.updateScheduleInterval);
 	}
 
-	setCourseElms() {
-		const start = document.querySelector(
-			`#nav-drawer > nav > ul > li > div[data-key="mycourses"]`
-		).parentElement;
-		const end = document.querySelector(
-			`#nav-drawer > nav > ul > li > a[data-key="courseindexpage"]`
-		).parentElement;
+	setSidebarCourseData(sidebarInfo) {
+		this.courseElms = [];
+		this.courseNames = [];
 
-		const courseElms = [];
-
-		let course = start.nextElementSibling;
-		while (course != null && course !== end) {
-			courseElms.push(course.firstElementChild);
-			course = course.nextElementSibling;
+		for (const courseElm of sidebarInfo.courseElms) {
+			const courseName = courseElm.querySelector(
+				"div > div > span.media-body"
+			).innerText;
+			if (!courseName.toLowerCase().includes("tutorium")) {
+				this.courseElms.push(courseElm);
+				this.courseNames.push(courseName);
+			}
 		}
-		this.courseElms = courseElms;
 	}
 
 	async updateSchedule() {
@@ -51,7 +49,7 @@ class ShowNextCourses {
 			const rawSchedule = new TextDecoder("iso-8859-1").decode(buffer);
 			const schedule = ical.parseICS(rawSchedule);
 			this.schedule = schedule;
-		} catch {
+		} catch (e) {
 			this.schedule = null;
 		}
 	}
@@ -65,10 +63,11 @@ class ShowNextCourses {
 			);
 			return null;
 		}
-
 		for (let event of Object.values(this.schedule)) {
 			if (this.isNextEvent(event)) {
-				const course = this.findCourseForSubject(event.summary);
+				const name = event.summary;
+				const tutor = event.description.match(/Dozent:(.*?)\n/)?.[1];
+				const course = this.findCourseForSubject(name, tutor);
 				if (course) {
 					this.panel.addCourse(course);
 				}
@@ -80,23 +79,29 @@ class ShowNextCourses {
 		const currentTime = new Date();
 		return (
 			event.type === "VEVENT" &&
-			event.start < new Date().setHours(currentTime.getHours() + 3) &&
+			event.start < new Date().setHours(currentTime.getHours() + 10) &&
 			event.end > currentTime
 		);
 	}
 
-	findCourseForSubject(subjectName) {
-		for (const courseElm of this.courseElms) {
-			const courseName = courseElm.querySelector(
-				"div > div > span.media-body"
-			).innerText;
-
-			if (courseName.includes(subjectName)) {
-				const courseElmClone = courseElm.cloneNode(true);
-				courseElmClone.classList.remove("active");
-				return courseElmClone;
-			}
+	findCourseForSubject(subjectName, tutorName) {
+		let similarities = stringSimilarity.findBestMatch(
+			subjectName,
+			this.courseNames
+		);
+		if (similarities.bestMatch.rating < 0.3 && tutorName) {
+			similarities = stringSimilarity.findBestMatch(
+				tutorName,
+				this.courseNames
+			);
 		}
-		return null;
+		if (similarities.bestMatch.rating < 0.23) return null;
+
+		const courseElm = this.courseElms[similarities.bestMatchIndex];
+
+		if (window.location.href.includes(courseElm.getAttribute("href")))
+			return null;
+
+		return courseElm.cloneNode(true);
 	}
 }
