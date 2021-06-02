@@ -1,16 +1,17 @@
-async function fillSidebar() {
-	const moreButton = document.querySelector(
-		'#nav-drawer > nav > ul > li > a[data-key="courseindexpage"]'
-	)?.parentElement;
-	const nav = moreButton?.parentElement;
-
-	if (nav && moreButton) {
+async function fillSidebar(sidebarInfo) {
+	if (sidebarInfo) {
 		const courses = await getCourses();
+		const courseLinks = sidebarInfo.courseElms.map((elm) =>
+			elm.getAttribute("href")
+		);
 
 		for (let course of courses) {
-			if (!courseAlreadyExists(course.href)) {
+			if (!courseLinks.includes(course.href)) {
 				const courseElm = createCourseElm(course.title, course.href);
-				nav.insertBefore(courseElm, moreButton);
+				sidebarInfo.courseEnd.parentElement.insertBefore(
+					courseElm,
+					sidebarInfo.courseEnd
+				);
 			}
 		}
 	}
@@ -25,13 +26,6 @@ async function getCourses() {
 		"#coc-courselist .coc-course > div:not(.coc-hidden) h3 > a"
 	);
 	return Array.from(courses);
-}
-
-function courseAlreadyExists(link) {
-	return (
-		document.querySelector(`#nav-drawer > nav > ul > li > a[href="${link}"]`) !=
-		null
-	);
 }
 
 function createCourseElm(title, link) {
