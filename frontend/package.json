@@ -1,6 +1,6 @@
 {
-	"name": "NAKExtension",
-	"version": "1.0.0",
+	"name": "nak-extension",
+	"version": "1.2.0",
 	"homepage": "./",
 	"private": true,
 	"dependencies": {
