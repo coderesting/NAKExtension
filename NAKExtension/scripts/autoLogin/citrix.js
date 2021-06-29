@@ -4,8 +4,10 @@ function init() {
 	const loginButton = document.getElementById("nsg-x1-logon-button");
 
 	if (nameInput && passInput && loginButton) {
+		console.log("attempt login");
 		attemptLogin(nameInput, passInput, loginButton);
 	} else {
+		console.log("retry");
 		setTimeout(init, 500);
 	}
 }
