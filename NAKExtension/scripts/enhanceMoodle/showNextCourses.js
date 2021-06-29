@@ -57,19 +57,15 @@ class ShowNextCourses {
 	async updateNextCourses() {
 		this.panel.clearCourses();
 
-		if (!this.schedule) {
-			this.panel.showMessage(
-				`Failed to load schedule for centuria: ${this.centuria}, semester: ${this.semester}`
-			);
-			return null;
-		}
-		for (let event of Object.values(this.schedule)) {
-			if (this.isNextEvent(event)) {
-				const name = event.summary;
-				const tutor = event.description.match(/Dozent:(.*?)\n/)?.[1];
-				const course = this.findCourseForSubject(name, tutor);
-				if (course) {
-					this.panel.addCourse(course);
+		if (this.schedule){
+			for (let event of Object.values(this.schedule)) {
+				if (this.isNextEvent(event)) {
+					const name = event.summary;
+					const tutor = event.description.match(/Dozent:(.*?)\n/)?.[1];
+					const course = this.findCourseForSubject(name, tutor);
+					if (course) {
+						this.panel.addCourse(course);
+					}
 				}
 			}
 		}
