@@ -1,5 +1,6 @@
 import {
 	Box,
+	ButtonGroup,
 	Container,
 	CssBaseline,
 	Paper,
@@ -21,18 +22,19 @@ function App() {
 			<main>
 				<Header
 					img="assets/NAKExtension-256x256.png"
-					text="Enhance Moodle, Cis and Owa with this Chrome extension. Features
+					text="Enhance Moodle, Cis and Owa with this Browser extension. Features
 						include auto login, Moodle course suggestions and more."
 				/>
 
 				<Box display="flex" justifyContent="center" m={2}>
-					<Button
-						href="https://chrome.google.com/webstore/detail/nak-extension/plhjgmegekkfofgdjoifdgcjgodfhihj"
-						variant="outlined"
-						color="primary"
-					>
-						Add to Chrome
-					</Button>
+					<ButtonGroup color="primary" variant="outlined">
+						<Button href="https://chrome.google.com/webstore/detail/nak-extension/plhjgmegekkfofgdjoifdgcjgodfhihj">
+							Add to Chrome
+						</Button>
+						<Button href="https://addons.mozilla.org/en-US/firefox/addon/nak-extension/">
+							Add to Firefox
+						</Button>
+					</ButtonGroup>
 				</Box>
 
 				<Container maxWidth="sm">

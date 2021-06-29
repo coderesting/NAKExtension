@@ -1,7 +1,7 @@
 {
 	"name": "NAK Extension",
-	"version": "1.1.1",
-	"description": "Simplify your life as a Nordakademie student",
+	"version": "1.2.0",
+	"description": "Auto login, course suggestions and exam notifications for Nordakademie students",
 	"manifest_version": 2,
 	"permissions": [
 		"storage",
