@@ -2,7 +2,7 @@
 
 [![NAK Tools](https://img.shields.io/badge/NAK%20Tools-member-blue)](https://nak.coderesting.dev/)
 
-Enhance Moodle, Cis and Owa with this Chrome extension. Features include auto login, Moodle course suggestions and more.
+Enhance Moodle, Cis and Owa with this browser extension. Features include auto login, Moodle course suggestions and exam Notifications.
 
 ## installation / Usage
 

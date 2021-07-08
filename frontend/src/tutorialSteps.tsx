@@ -1,10 +1,10 @@
 const tutorialSteps = [
 	{
-		description: "Add the extension to Chrome",
+		description: "Add the extension to your browser",
 		imgPath: "./assets/tutorial/1.mp4",
 	},
 	{
-		description: "Pin the extension to access quick settings",
+		description: "Click on the extension to access quick settings",
 		imgPath: "./assets/tutorial/2.mp4",
 	},
 	{

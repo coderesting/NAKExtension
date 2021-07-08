@@ -7,6 +7,10 @@ const featureSteps = [
 		description: "Moodle course suggestions based on your schedule",
 		imgPath: "./assets/features/2.mp4",
 	},
+	{
+		description: "Exam notifications",
+		imgPath: "./assets/features/3.png",
+	},
 ];
 
 export default featureSteps;

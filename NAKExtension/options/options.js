@@ -113,10 +113,10 @@ class Options {
 		this.textInputs.semester.value = semester;
 
 		var inputEvent = new Event("input");
-		this.textInputs.username.dispatchEvent(inputEvent);
-		this.textInputs.password.dispatchEvent(inputEvent);
-		this.textInputs.centuria.dispatchEvent(inputEvent);
-		this.textInputs.semester.dispatchEvent(inputEvent);
+		if (username.length > 0) this.textInputs.username.dispatchEvent(inputEvent);
+		if (password.length > 0) this.textInputs.password.dispatchEvent(inputEvent);
+		if (centuria.length > 0) this.textInputs.centuria.dispatchEvent(inputEvent);
+		if (semester.length > 0) this.textInputs.semester.dispatchEvent(inputEvent);
 	}
 }
 
