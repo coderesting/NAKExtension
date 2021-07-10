@@ -1,18 +1,10 @@
 async function getData(data) {
-	return await getDataChrome(data);
-}
-
-async function setData(data) {
-	return await setDataChrome(data);
-}
-
-async function getDataChrome(data) {
 	return new Promise((res) => {
 		chrome.storage.local.get(data, (data) => res(data));
 	});
 }
 
-async function setDataChrome(data) {
+async function setData(data) {
 	const emptyKeys = Object.entries(data)
 		.filter((d) => d[1] === "")
 		.map((d) => d[0]);

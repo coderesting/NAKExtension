@@ -3,7 +3,13 @@
 	"version": "1.1.1",
 	"description": "Simplify your life as a Nordakademie student",
 	"manifest_version": 2,
-	"permissions": ["storage", "alarms", "notifications"],
+	"permissions": [
+		"storage",
+		"alarms",
+		"notifications",
+		"https://schedule-cleaner.herokuapp.com/*",
+		"https://cis.nordakademie.de/studium/pruefungen/pruefungsergebnisse/*"
+	],
 	"icons": { "128": "NAKExtension-128x128.png" },
 	"browser_action": {
 		"default_icon": "NAKExtension-128x128.png",
@@ -51,7 +57,9 @@
 			"matches": ["*://moodle2.nordakademie.de/*"],
 			"js": [
 				"scripts/storage.js",
+				"scripts/enhanceMoodle/stringSimilarity.js",
 				"scripts/enhanceMoodle/ical.js",
+				"scripts/enhanceMoodle/getSidebarInfo.js",
 				"scripts/enhanceMoodle/fillSidebar.js",
 				"scripts/enhanceMoodle/nextCoursesPanel.js",
 				"scripts/enhanceMoodle/showNextCourses.js",
