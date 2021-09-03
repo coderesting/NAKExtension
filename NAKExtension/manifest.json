@@ -51,6 +51,15 @@
 		},
 
 		{
+			"matches": ["*://idp.nordakademie.de/idp/profile/SAML2/*"],
+			"js": [
+				"scripts/storage.js",
+				"scripts/autoLogin/clicker.js",
+				"scripts/autoLogin/shibboleth.js"
+			]
+		},
+
+		{
 			"matches": ["*://aaa.nordakademie.de/logon/LogonPoint/index.html"],
 			"js": [
 				"scripts/storage.js",
