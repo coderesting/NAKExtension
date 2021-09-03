@@ -1,6 +1,6 @@
 {
 	"name": "NAK Extension",
-	"version": "1.2.2",
+	"version": "1.2.3",
 	"description": "Auto login, course suggestions and exam notifications for Nordakademie students",
 	"manifest_version": 2,
 	"permissions": [
@@ -47,6 +47,15 @@
 				"scripts/storage.js",
 				"scripts/autoLogin/clicker.js",
 				"scripts/autoLogin/gitlab.js"
+			]
+		},
+
+		{
+			"matches": ["*://idp.nordakademie.de/idp/profile/SAML2/*"],
+			"js": [
+				"scripts/storage.js",
+				"scripts/autoLogin/clicker.js",
+				"scripts/autoLogin/shibboleth.js"
 			]
 		},
 
