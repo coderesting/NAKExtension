@@ -31,7 +31,7 @@ function App() {
 						<Button href="https://chrome.google.com/webstore/detail/nak-extension/plhjgmegekkfofgdjoifdgcjgodfhihj">
 							Add to Chrome
 						</Button>
-						<Button href="https://addons.mozilla.org/en-US/firefox/addon/nak-extension/">
+						<Button href="./versions/nak_extension-1.2.1.xpi">
 							Add to Firefox
 						</Button>
 					</ButtonGroup>

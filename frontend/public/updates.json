@@ -1,0 +1,20 @@
+{
+	"addons": {
+		"{b196f203-9b8c-4f91-a597-1fcc75eb172b}": {
+			"updates": [
+				{
+					"version": "1.2.0",
+					"update_link": "https://nak.coderesting.dev/nakextension/versions/nak_extension-1.2.0.xpi"
+				},
+				{
+					"version": "1.2.1",
+					"update_link": "https://nak.coderesting.dev/nakextension/versions/nak_extension-1.2.1.xpi"
+				},
+				{
+					"version": "1.2.2",
+					"update_link": "https://nak.coderesting.dev/nakextension/versions/nak_extension-1.2.2.xpi"
+				}
+			]
+		}
+	}
+}

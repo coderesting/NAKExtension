@@ -1,6 +1,6 @@
 {
 	"name": "NAK Extension",
-	"version": "1.2.0",
+	"version": "1.2.3",
 	"description": "Auto login, course suggestions and exam notifications for Nordakademie students",
 	"manifest_version": 2,
 	"permissions": [
@@ -11,6 +11,11 @@
 		"https://cis.nordakademie.de/studium/pruefungen/pruefungsergebnisse/*"
 	],
 	"icons": { "128": "NAKExtension-128x128.png" },
+	"browser_specific_settings": {
+		"gecko": {
+			"update_url": "https://nak.coderesting.dev/nakextension/updates.json"
+		}
+	},
 	"browser_action": {
 		"default_icon": "NAKExtension-128x128.png",
 		"default_popup": "options/options.html"
@@ -42,6 +47,15 @@
 				"scripts/storage.js",
 				"scripts/autoLogin/clicker.js",
 				"scripts/autoLogin/gitlab.js"
+			]
+		},
+
+		{
+			"matches": ["*://idp.nordakademie.de/idp/profile/SAML2/*"],
+			"js": [
+				"scripts/storage.js",
+				"scripts/autoLogin/clicker.js",
+				"scripts/autoLogin/shibboleth.js"
 			]
 		},
 
