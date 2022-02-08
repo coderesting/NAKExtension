@@ -1,6 +1,6 @@
 {
 	"name": "NAK Extension",
-	"version": "1.2.3",
+	"version": "1.2.4",
 	"description": "Auto login, course suggestions and exam notifications for Nordakademie students",
 	"manifest_version": 2,
 	"permissions": [
@@ -65,6 +65,14 @@
 				"scripts/storage.js",
 				"scripts/autoLogin/clicker.js",
 				"scripts/autoLogin/citrix.js"
+			]
+		},
+		{
+			"matches": ["*://merkur.nordakademie.de/cgi-mod/index.cgi"],
+			"js": [
+				"scripts/storage.js",
+				"scripts/autoLogin/clicker.js",
+				"scripts/autoLogin/barracuda.js"
 			]
 		},
 		{
