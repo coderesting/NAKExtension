@@ -68,7 +68,7 @@
 			]
 		},
 		{
-			"matches": ["*://merkur.nordakademie.de/cgi-mod/index.cgi"],
+			"matches": ["*://merkur.nordakademie.de/cgi-mod/*"],
 			"js": [
 				"scripts/storage.js",
 				"scripts/autoLogin/clicker.js",
