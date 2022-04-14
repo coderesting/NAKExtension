@@ -76,6 +76,13 @@
 			]
 		},
 		{
+			"matches": [
+				"*://wayf.springernature.com/*",
+				"*://link.springer.com/signup-login?*"
+			],
+			"js": ["scripts/storage.js", "scripts/autoLogin/springer.js"]
+		},
+		{
 			"matches": ["*://moodle2.nordakademie.de/*"],
 			"js": [
 				"scripts/storage.js",
