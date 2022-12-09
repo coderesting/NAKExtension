@@ -31,7 +31,7 @@ const getCisCookie = async (username, password) => {
 const getExamGrades = async () => {
   let examGradesString
   await fetch(
-    "https://cis.nordakademie.de/studium/pruefungen/pruefungsergebnisse/?tx_nagrades_nagradesmodules%5Blang%5D=de&tx_nagrades_nagradesmodules%5BcurriculumId%5D=56&tx_nagrades_nagradesmodules%5Baction%5D=transcript&tx_nagrades_nagradesmodules%5Bcontroller%5D=Notenverwaltung&cHash=6966ddcc530a48a5bc3c9f277fb4b6a8",
+    "https://cis.nordakademie.de/studium/pruefungen/pruefungsergebnisse?tx_nagrades_nagradesmodules%5Baction%5D=transcript&tx_nagrades_nagradesmodules%5Bcontroller%5D=Notenverwaltung&tx_nagrades_nagradesmodules%5BcurriculumId%5D=56&tx_nagrades_nagradesmodules%5Blang%5D=de&cHash=4bd3a83a0de006ea97f783ede516332a",
     {
       headers: {
         accept:
